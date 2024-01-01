@@ -1,0 +1,33 @@
+<h1>my form</h1>
+<button>
+<%= link_to "show news_article",  news_articles_path %></button>
+
+<%= form_with model: @news_article do |form|%>
+    <div>
+    <%= form.label :Title %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :Sub_topic %><br>
+    <%= form.text_field :sub_topic %>
+  </div>
+
+  <div>
+  <%= form.label :Content %><br>
+  <%= form.text_field :content %>
+</div>
+<%= form.file_field :avatar %>
+
+
+
+<div >
+<%= form.label :category_id%>
+<%= form.collection_select :category_id, Category.all, :id, :name, {prompt: "Select a category"} %>
+</div>
+
+        <div>
+         <button> <%= form.submit %></button>
+        </div>
+
+    <% end %>

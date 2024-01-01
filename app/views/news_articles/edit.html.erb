@@ -1,0 +1,30 @@
+<h1>Edit articles</h1>
+
+<%= link_to "show news_article",  news_articles_path %>
+
+<%= form_with model: @news_article do |form|%>
+        <div>
+          <%= form.label :Tittle %><br>
+          <%= form.text_field :title %>
+        </div>
+      
+        <div>
+          <%= form.label :Sub_topic %><br>
+          <%= form.text_field :sub_topic %>
+        </div>
+
+        <div>
+        <%= form.label :Content %><br>
+        <%= form.text_field :content %>
+      </div>
+
+      <div>
+      <%= form.label :image %><br>
+      <%= form.file_field :avatar %>
+    </div>
+
+        <div>
+          <%= form.submit %>
+        </div>
+
+    <% end %>

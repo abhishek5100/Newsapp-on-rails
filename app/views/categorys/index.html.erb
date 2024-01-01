@@ -1,0 +1,13 @@
+<h1>Category LISTS</h1>
+
+<button><%= link_to "create new category",  new_category_path %></button>
+
+<% @categorys.each do |category|%>
+<ul>
+<li><%= category.name%></li>
+</ul>
+
+<button><%= link_to "Delete", category_path(category), method: :delete, data: { turbo_method: :delete, confirm: "Are you sure?" } %></button>
+<button><%= link_to "Edit",   edit_category_path(category) %>
+</button>
+<% end %>

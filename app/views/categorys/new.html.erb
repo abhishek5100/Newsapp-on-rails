@@ -1,0 +1,16 @@
+<h1>my form</h1>
+
+<button>
+<%= link_to "show category",  categorys_path %></button>
+
+<%= form_with model: @category do |form|%>
+    <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+        <div>
+         <button> <%= form.submit %></button>
+        </div>
+
+    <% end %>

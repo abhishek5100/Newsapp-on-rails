@@ -1,0 +1,43 @@
+
+
+
+<% if user_signed_in? %> 
+
+ <div> <h1>Welcome <%= current_user.email %></h1> </div> 
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+<% else %>
+  <%= button_to "Sign in", new_user_session_path %> 
+<% end %>
+
+
+<h1>News LISTS</h1>
+
+<div class="text-primary"> Role : <%= current_user.roles.pluck(:name) %></div> 
+
+<button><%= link_to "create new news_article",  new_news_article_path %></button>
+
+<% @news_articles.each do |news_article|%>
+    
+<div class="border d-flex justify-content-center align-items-center">
+<% if news_article.avatar.attached? %>
+<li><%= image_tag(news_article.avatar) %></li>
+<% else %>
+<li>No Image Available</li>
+<% end %>
+<ul>
+<ol>
+<li><%= news_article.category.name%></li>
+</ol>
+<li><%= news_article.title%></li>
+<li><%= news_article.sub_topic%></li>
+<li><%= news_article.content%></li>
+
+</ul>
+</ol>
+
+
+<button class="btn"><%= link_to "Delete", news_article_path(news_article), method: :delete, data: { turbo_method: :delete, confirm: "Are you sure?" } %></button>
+<button class="btn"><%= link_to "Edit",   edit_news_article_path(news_article) %>
+</button>
+</div>
+<% end %>
